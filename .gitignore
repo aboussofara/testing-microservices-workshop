@@ -1,0 +1,13 @@
+node_modules/
+npm-debug.log
+.DS_Store
+.idea/
+.vscode/
+*.swp
+coverage*/
+.nyc_output/
+lcov.info
+newrelic_agent.log
+package-lock.json
+.scannerwork
+.vagrant

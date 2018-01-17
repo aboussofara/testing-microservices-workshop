@@ -1,0 +1,43 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+def create_synced_dir(config, host_dir, vm_dir, owner = 'vagrant', group = 'vagrant')
+  config.vm.synced_folder host_dir, vm_dir, owner: owner, group: group if File.directory?(host_dir)
+end
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.ssh.insert_key=false
+  #config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "workshop.box"
+  config.vm.hostname = "workshop"
+
+  create_synced_dir(config, "../topics/", "/home/vagrant/topics")
+
+  # helloworld
+  config.vm.network "forwarded_port", guest: 9080, host: 9080
+  # catalogue
+  config.vm.network "forwarded_port", guest: 9081, host: 9081
+  # service 2
+  config.vm.network "forwarded_port", guest: 9082, host: 9082
+  # service 3
+  config.vm.network "forwarded_port", guest: 9083, host: 9083
+
+  config.vm.network "private_network", ip: "192.168.33.10"
+
+  config.vm.provider "virtualbox" do |vb|
+     vb.name = "testing-microservices-workshop"
+     # Recommended specs for VM
+     vb.customize ["modifyvm", :id, "--memory", "4096"]
+     vb.customize ["modifyvm", :id, "--cpus", "2"]
+
+     # Minimum specs for VM - For any wosk station with < 4GB RAM and < 2CPU
+     # vb.customize ["modifyvm", :id, "--memory", "2048"]
+     # vb.customize ["modifyvm", :id, "--cpus", "1"]
+  end
+
+  config.vm.post_up_message = "Your workshop environment is up and running \n Do vagrant ssh to login to your VM \n Do vagrant destroy to remove any trace of your VM"
+
+end

@@ -1,0 +1,26 @@
+version: '3'
+services:
+  catalogue:
+    image: catalogue
+    build: ./catalogue
+    ports:
+      - "9081:9081"
+    volumes:
+      - "./catalogue:/usr/src/app"
+  review:
+    image: review
+    build: ./review
+    ports:
+      - "9082:9082"
+    volumes:
+      - "./review:/usr/src/app"
+  shop:
+    image: shop
+    build: ./shop
+    ports:
+      - "9083:9083"
+    links:
+      - catalogue
+      - review
+    volumes:
+      - "./shop:/usr/src/app"
