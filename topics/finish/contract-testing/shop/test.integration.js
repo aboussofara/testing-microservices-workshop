@@ -1,38 +1,61 @@
-const chai = require('chai')
-const path = require('path')
-const chaiAsPromised = require('chai-as-promised')
-const pact = require('pact')
-const expect = chai.expect
-const API_PORT = process.env.API_PORT || 9081
-const {
-  shop
-} = require('../shop')
-chai.use(chaiAsPromised)
+const { before, it, describe, after } = global;
+
+const chai = require('chai');
+const path = require('path');
+const chaiAsPromised = require('chai-as-promised');
+const pact = require('pact');
+const expect = chai.expect;
+const shop = require('./shop');
+chai.use(chaiAsPromised);
 
 // Configure and import consumer API
 // Note that we update the API endpoint to point at the Mock Service
-const LOG_LEVEL = process.env.LOG_LEVEL || 'WARN'
+const LOG_LEVEL = process.env.LOG_LEVEL || 'WARN';
 
-const provider = pact({
+const cataglogueMock = pact({
   consumer: 'shop',
   provider: 'catalogue',
-  port: API_PORT,
-  log: path.resolve(process.cwd(), 'logs', 'pact.log'),
+  port: 9081,
+  log: path.resolve(process.cwd(), 'logs', 'catalogue.log'),
   dir: path.resolve(process.cwd(), 'pacts'),
   logLevel: LOG_LEVEL,
   spec: 2
-})
-const expectedBody = {
-  sku: 1
-}
+});
+
+const reviewMock = pact({
+  consumer: 'shop',
+  provider: 'review',
+  port: 9082,
+  log: path.resolve(process.cwd(), 'logs', 'review.log'),
+  dir: path.resolve(process.cwd(), 'pacts'),
+  logLevel: LOG_LEVEL,
+  spec: 2
+});
+
+const expectedBodyForCatalogue = [
+  {
+    sku: 1,
+    title: 'Flood Light with Cable and Plug LED',
+    color: 'red'
+  }
+];
+
+const expectedBodyForReview = {
+  1: [{
+    sku: 1,
+    user: 'Chris Smith',
+    description: 'First off, the S5620 provides a very good shave, the triple shaving heads allow for getting a clean shave around places like your chin and under your nose.',
+    rating: 3
+  }]
+};
 
 describe('Pact with catalogue', () => {
-  //describe('given data count > 0', () => {
-    describe('when a call to the Provider is made', () => {
-      before(() => {
-        return provider.setup()
+  describe('when a call to the Provider is made', () => {
+    before(() => {
+      return Promise.all([
+        cataglogueMock.setup()
           .then(() => {
-            provider.addInteraction({
+            cataglogueMock.addInteraction({
               uponReceiving: 'a request for JSON data',
               withRequest: {
                 method: 'GET',
@@ -43,26 +66,43 @@ describe('Pact with catalogue', () => {
                 headers: {
                   'Content-Type': 'application/json; charset=utf-8'
                 },
-                body: expectedBody
+                body: expectedBodyForCatalogue
+              }
+            })
+          }),
+        reviewMock.setup()
+          .then(() => {
+            reviewMock.addInteraction({
+              uponReceiving: 'a request for JSON data',
+              withRequest: {
+                method: 'GET',
+                path: '/reviews'
+              },
+              willRespondWith: {
+                status: 200,
+                headers: {
+                  'Content-Type': 'application/json; charset=utf-8'
+                },
+                body: expectedBodyForReview
               }
             })
           })
-      })
+      ]);
+    });
 
-      it('can process the JSON payload from the provider', () => {
-        const response = shop()
+    it('can process the JSON payload from the provider', () => {
+      const response = shop();
 
-        return expect(response).to.eventually.have.property('sku', 0.1)
-      })
+      return expect(response).to.eventually.have.deep.property('[0].sku', 1);
+    });
 
-      it('should validate the interactions and create a contract', () => {
-        return provider.verify()
-      })
+    it('should validate the interactions and create a contract', () => {
+      return Promise.all([cataglogueMock.verify(), reviewMock.verify()]);
     })
+  });
 
-    // Write pact files to file
-    after(() => {
-      return provider.finalize()
-    })
-//  })
-})
+  // Write pact files to file
+  after(() => {
+    return Promise.all([cataglogueMock.finalize(), reviewMock.verify()]);
+  })
+});
