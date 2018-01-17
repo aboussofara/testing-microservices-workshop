@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha test.js",
-    "integration": "mocha --timeout 3000 test.integration.js"
+    "integration": "mocha --timeout 10000 test.integration.js"
   },
   "author": "",
   "license": "BSD-2-Clause",
@@ -18,7 +18,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-as-promised": "^7.1.1",
     "mocha": "~3.2.0",
-    "mountebank-helper": "^1.2.1"
+    "pact": "^4.3.2"
   }
 }
