@@ -1,0 +1,22 @@
+{
+  "name": "consumer-contracts",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "integration": "mocha --timeout 60000 test.integration.js"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express": "~4.15.2",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "request-promise-native": "^1.0.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "~3.2.0",
+    "pact": "^4.3.2"
+  }
+}
