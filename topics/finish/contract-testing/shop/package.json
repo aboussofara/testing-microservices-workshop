@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha test.js",
-    "integration": "mocha --timeout 10000 test.integration.js"
+    "integration": "mocha --timeout 60000 test.integration.js"
   },
   "author": "",
   "license": "BSD-2-Clause",
