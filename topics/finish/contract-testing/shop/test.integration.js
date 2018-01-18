@@ -103,6 +103,6 @@ describe('Pact with catalogue', () => {
 
   // Write pact files to file
   after(() => {
-    return Promise.all([cataglogueMock.finalize(), reviewMock.verify()]);
+    return Promise.all([cataglogueMock.finalize(), reviewMock.finalize()]);
   })
 });
