@@ -1,7 +1,7 @@
 Testing Microservices
 =====================
 
-Version: 16 - April 2017
+Version: 17 - Jan 2018
 
 Requirements
 ------------
@@ -32,10 +32,7 @@ them. I have NOT included Linux versions in /installers.
 
 Slides & Topics
 ---------------
-* Then topics folder includes source code matrial for the workshop, open
-  it in your text editor.
-* Open up the slides in the /slides in your machine and follow the slides
-too.
+* [Visit here for slides](https://docs.google.com/presentation/d/1QRvcH8OKaM7IWpn_3gT3q7lH1sLP8vcQw1BbyjxBEE4/edit?usp=sharing)
 
 00-bring-up-the-vm
 ------------------
@@ -129,21 +126,19 @@ affects the contract test.
 Start
 -----
 * On an active ssh session bring up the three services using docker-compose:
-* `cd ~/topics/start/02-service-testing`
+* `cd ~/topics/start/03-service-testing`
 * `docker-compose up`
 * Open a second ssh session, on a terminal/Git bash:
 * Go to `/vmbox` and do a `vagrant up` and `vagrant ssh`.
-* `cd ~/topics/start/03-contract-testing/shop-catalogue-contracts`
-* In your text editor, take a look at `test.js` and familiarize yourself with how we are
-  defining a contract.
+* `cd ~/topics/start/03-contract-testing/shop`
+* In your text editor, take a look at `test.integration.js` and familiarize yourself with how we are using pact to mock our providers.
 
 Exercise
 --------
-* On the ssh session try to run the contract tests by `npm test`
-* Try to make the test pass.
-* Simulate breaking change on the app (e.g. change the return type of
-  products to be an object).
+* On the ssh session try to run the service tests by `npm run integration`
+* Try to make the test pass with proper mocks in place.
 * Restart the apps:
 * Stop the docker-compose by `ctrl - c` on the session window that is running it
 * Then bring it up again: `docker-compose up`
-* Run the contract tests again and see them fail
+* Run the catalogue consumer contract tests and see them fail
+* What do you need to add or change to get the consumer contract tests to pass?
