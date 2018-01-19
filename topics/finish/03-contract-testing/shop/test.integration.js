@@ -4,6 +4,7 @@ const chai = require('chai');
 const path = require('path');
 const chaiAsPromised = require('chai-as-promised');
 const pact = require('pact');
+const { somethingLike: like, eachLike } = pact.Matchers;
 const expect = chai.expect;
 const shop = require('./shop');
 chai.use(chaiAsPromised);
@@ -32,21 +33,22 @@ const reviewMock = pact({
   spec: 2
 });
 
-const expectedBodyForCatalogue = [
+const expectedBodyForCatalogue = eachLike(
   {
-    sku: 1,
-    title: 'Flood Light with Cable and Plug LED',
-    color: 'red'
-  }
-];
+    sku: like(1),
+    title: like('Flood Light with Cable and Plug LED'),
+    color: like('red')
+  },
+  { min: 1 }
+);
 
 const expectedBodyForReview = {
-  1: [{
-    sku: 1,
-    user: 'Chris Smith',
-    description: 'First off, the S5620 provides a very good shave, the triple shaving heads allow for getting a clean shave around places like your chin and under your nose.',
-    rating: 3
-  }]
+  1: eachLike({
+    sku: like(1),
+    user: like('Chris Smith'),
+    description: like('First off, the S5620 provides a very good shave, the triple shaving heads allow for getting a clean shave around places like your chin and under your nose.'),
+    rating: like(3)
+  }, { min: 1 })
 };
 
 describe('Pact with catalogue', () => {
