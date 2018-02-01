@@ -9,4 +9,4 @@ apt-get -y -qq update
 
 echo "Installing node..."
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-apt-get install -y nodejs
+apt-get install -y python-software-properties python make nodejs
