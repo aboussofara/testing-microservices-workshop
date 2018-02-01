@@ -35,7 +35,7 @@ Slides & Topics
 * [Visit here for slides](https://goo.gl/pJSFKz)
 
 00-bring-up-the-vm
-------------------
+==================
 
 * `cd [location that you copied the contents of this workshop]`
 * `cd vmbox/`
