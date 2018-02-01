@@ -1,6 +1,5 @@
 let chai = require('chai');
 let expect = chai.expect;
-let request = require('request-promise-native');
 let shop = require('./shop');
 
 describe('shop', () => {

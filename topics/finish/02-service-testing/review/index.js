@@ -3,7 +3,7 @@ var app = express()
 
 var review = require('./review');
 
-app.get('/reviews', function (req, res) {
+app.get('/review', function (req, res) {
   res.send(review())
 })
 

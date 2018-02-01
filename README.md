@@ -82,10 +82,7 @@ Start
 * Take a look at folder layout and notice our three services.
 * Take a look at our docker-compose file and see how we are linking
   services for shop.
-* Since the internet connection might be bad, let's load up the base
-  image that we need from a local back up.
-* `ls docker-images` and notice the node-6 back up file. Now let's load it:
-* `docker load < ./docker-images/node-6`
+* Build all your services: `docker-compose build`
 * Bring up all services: `docker-compose up`
 * Above command will build all three services and and load them up. You
   should see something like:
@@ -97,17 +94,17 @@ review_1     | review listening on 9082!
 shop_1       | shop listening on 9083!
 ```
 
-* Go to http://192.168.33.10:9081 and see the catalogue
-* Go to http://192.168.33.10:9082 and see the review
-* Go to http://192.168.33.10:9083 and see the shop
+* Go to http://localhost:9081/products and see the catalogue
+* Go to http://localhost:9082/review and see the review
+* Go to http://localhost:9083/shop and see the shop
 * Take a look at the shop.js file.
 * Notice how `shop` is orchestrating downstream calls to get catalogue and reviews.
 
 
 Exercise
 --------
-* Stop the running docker-compose by `ctrl + c`. Make sure the services
-  are not running by navigating to: `http://192.168.33.10:9083` and see
+* Stop the running docker-compose by `cmd + c` or `ctrl + c`. Make sure the services
+  are not running by navigating to: `http://localhost:9083` and see
 it does not load in browser.
 * Run the integration tests: `npm run integration`
 * See it fail because it can not connect to `...connect ECONNREFUSED 127.0.0.1:9082`
