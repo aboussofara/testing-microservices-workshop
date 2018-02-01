@@ -7,7 +7,7 @@ chai.use(chaiAsPromised);
 // Verify that the provider meets all consumer expectations
 describe('Consumer contract tests for review', () => {
   it('should validate the expectations from generated pact contracts', function () { // lexical binding required here for timeout
-    this.timeout(10000);
+    this.timeout(60000);
 
     let opts = {
       provider: 'Review',

@@ -125,19 +125,22 @@ affects the contract test.
 Start
 -----
 * On an active ssh session bring up the three services using docker-compose:
-* `cd ~/topics/start/03-service-testing`
-* `docker-compose up`
-* Open a second ssh session, on a terminal/Git bash:
-* Go to `/vmbox` and do a `vagrant up` and `vagrant ssh`.
+* `cd ~/topics/start/03-contract-testing`
 * `cd ~/topics/start/03-contract-testing/shop`
 * In your text editor, take a look at `test.integration.js` and familiarize yourself with how we are using pact to mock our providers.
 
 Exercise
 --------
-* On the ssh session try to run the service tests by `npm run integration`
+* On the SSH session, try to run the service tests by `npm run integration`
 * Try to make the test pass with proper mocks in place.
 * Restart the apps:
-* Stop the docker-compose by `ctrl - c` on the session window that is running it
-* Then bring it up again: `docker-compose up`
+* Stop the docker-compose session by `cmd + c` or `ctrl + c` if it is running on a session window
+* Build all your services: `docker-compose build`
+* Bring up all services: `docker-compose up`
+* Open a second ssh session, on a terminal/Git bash:
+  * Go to `/vmbox` and run `vagrant ssh` to start another SSH session.
 * Run the catalogue consumer contract tests and see them fail
+  * `cd ~/topics/start/03-contract-testing/catalogue-consumer-contracts`
+  * `npm install`
+  * `npm test`
 * What do you need to add or change to get the consumer contract tests to pass?

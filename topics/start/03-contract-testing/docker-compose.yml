@@ -7,6 +7,7 @@ services:
       - "9081:9081"
     volumes:
       - "./catalogue:/usr/src/app"
+      - "/usr/src/app/node_modules"
   review:
     image: review
     build: ./review
@@ -14,6 +15,7 @@ services:
       - "9082:9082"
     volumes:
       - "./review:/usr/src/app"
+      - "/usr/src/app/node_modules"
   shop:
     image: shop
     build: ./shop
@@ -22,5 +24,9 @@ services:
     links:
       - catalogue
       - review
+    environment:
+      CATALOGUE_HOST: catalogue
+      REVIEW_HOST: review
     volumes:
       - "./shop:/usr/src/app"
+      - "/usr/src/app/node_modules"

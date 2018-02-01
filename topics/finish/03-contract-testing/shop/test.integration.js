@@ -78,7 +78,7 @@ describe('Pact with catalogue', () => {
               uponReceiving: 'a request for JSON data',
               withRequest: {
                 method: 'GET',
-                path: '/reviews'
+                path: '/review'
               },
               willRespondWith: {
                 status: 200,
