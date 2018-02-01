@@ -12,23 +12,22 @@ use Vagrant to control the virtual machine.
 * VirtualBox 5.1.14
 * Vagrant 1.9.1
 
-You can find the installers in `/installers` folder. Please the the
+You can find the installers [here](https://goo.gl/jVXR3e). Please the the
 notes below for Mac/Windows/Linux.
 
 After installing, please follow the section (00-bring-up-the-vm) and make sure you can do a successful ssh session.
 
 ### Mac
 On Mac with good internet connection you can also install these with
-Cask and brew. You can also find the installers in /installer folder.
+Cask and brew. You can also find the installers [here](https://goo.gl/jVXR3e).
 
 ### Windows
-You can download these if you have a good internet connection or copy and install from `/installers` folder.
+You can download these from [here](https://goo.gl/jVXR3e).
 You should also get `Git-2.11.1-32-bit`. We will use the Git Bash window for ssh during this session.
 Some versions of Windows don't play nice with VirtualBox if you are running Windows on Parallels.
 
 ### Linux
-Please follow Vagrant and VirtualBox documentation about how to install
-them. I have NOT included Linux versions in /installers.
+Please follow Vagrant and VirtualBox websites about how to installthem.
 
 Slides & Topics
 ---------------
