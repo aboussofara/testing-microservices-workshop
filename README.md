@@ -32,14 +32,15 @@ them. I have NOT included Linux versions in /installers.
 
 Slides & Topics
 ---------------
-* [Visit here for slides](https://docs.google.com/presentation/d/1QRvcH8OKaM7IWpn_3gT3q7lH1sLP8vcQw1BbyjxBEE4/edit?usp=sharing)
+* [Visit here for slides](https://goo.gl/pJSFKz)
 
 00-bring-up-the-vm
 ------------------
 
 * `cd [location that you copied the contents of this workshop]`
 * `cd vmbox/`
-* `vagrant box add workshop workshop.box`
+* `vagrant box add ubuntu/trusty64`
+* `vagrant plugin install vagrant-docker-compose`
 * `vagrant up`
 * `vagrant ssh`
 * Now you in an ssh session with the vmbox
@@ -56,6 +57,7 @@ you how to start a node app and how to run tests using npm.
 
 * `cd ~/topics/start/01-getting-started`
 * `cd helloworld`
+* `npm install`
 * `npm start`
 * Access the app from http://localhost:9080
 * You should see the "Hello World!" message in your browser.
@@ -80,10 +82,7 @@ Start
 * Take a look at folder layout and notice our three services.
 * Take a look at our docker-compose file and see how we are linking
   services for shop.
-* Since the internet connection might be bad, let's load up the base
-  image that we need from a local back up.
-* `ls docker-images` and notice the node-6 back up file. Now let's load it:
-* `docker load < ./docker-images/node-6`
+* Build all your services: `docker-compose build`
 * Bring up all services: `docker-compose up`
 * Above command will build all three services and and load them up. You
   should see something like:
@@ -95,17 +94,17 @@ review_1     | review listening on 9082!
 shop_1       | shop listening on 9083!
 ```
 
-* Go to http://192.168.33.10:9081 and see the catalogue
-* Go to http://192.168.33.10:9082 and see the review
-* Go to http://192.168.33.10:9083 and see the shop
+* Go to http://localhost:9081/products and see the catalogue
+* Go to http://localhost:9082/review and see the review
+* Go to http://localhost:9083/shop and see the shop
 * Take a look at the shop.js file.
 * Notice how `shop` is orchestrating downstream calls to get catalogue and reviews.
 
 
 Exercise
 --------
-* Stop the running docker-compose by `ctrl + c`. Make sure the services
-  are not running by navigating to: `http://192.168.33.10:9083` and see
+* Stop the running docker-compose by `cmd + c` or `ctrl + c`. Make sure the services
+  are not running by navigating to: `http://localhost:9083` and see
 it does not load in browser.
 * Run the integration tests: `npm run integration`
 * See it fail because it can not connect to `...connect ECONNREFUSED 127.0.0.1:9082`
@@ -126,19 +125,22 @@ affects the contract test.
 Start
 -----
 * On an active ssh session bring up the three services using docker-compose:
-* `cd ~/topics/start/03-service-testing`
-* `docker-compose up`
-* Open a second ssh session, on a terminal/Git bash:
-* Go to `/vmbox` and do a `vagrant up` and `vagrant ssh`.
+* `cd ~/topics/start/03-contract-testing`
 * `cd ~/topics/start/03-contract-testing/shop`
 * In your text editor, take a look at `test.integration.js` and familiarize yourself with how we are using pact to mock our providers.
 
 Exercise
 --------
-* On the ssh session try to run the service tests by `npm run integration`
+* On the SSH session, try to run the service tests by `npm run integration`
 * Try to make the test pass with proper mocks in place.
 * Restart the apps:
-* Stop the docker-compose by `ctrl - c` on the session window that is running it
-* Then bring it up again: `docker-compose up`
+* Stop the docker-compose session by `cmd + c` or `ctrl + c` if it is running on a session window
+* Build all your services: `docker-compose build`
+* Bring up all services: `docker-compose up`
+* Open a second ssh session, on a terminal/Git bash:
+  * Go to `/vmbox` and run `vagrant ssh` to start another SSH session.
 * Run the catalogue consumer contract tests and see them fail
+  * `cd ~/topics/start/03-contract-testing/catalogue-consumer-contracts`
+  * `npm install`
+  * `npm test`
 * What do you need to add or change to get the consumer contract tests to pass?

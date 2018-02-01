@@ -10,8 +10,8 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key=false
-  #config.vm.box = "ubuntu/trusty64"
-  config.vm.box = "workshop.box"
+  config.vm.box = "ubuntu/trusty64"
+  #config.vm.box = "workshop.box"
   config.vm.hostname = "workshop"
 
   create_synced_dir(config, "../topics/", "/home/vagrant/topics")
@@ -25,7 +25,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # service 3
   config.vm.network "forwarded_port", guest: 9083, host: 9083
 
-  config.vm.network "private_network", ip: "192.168.33.10"
+  #config.vm.network "private_network", ip: "192.168.33.10"
 
   config.vm.provider "virtualbox" do |vb|
      vb.name = "testing-microservices-workshop"
@@ -37,6 +37,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      # vb.customize ["modifyvm", :id, "--memory", "2048"]
      # vb.customize ["modifyvm", :id, "--cpus", "1"]
   end
+
+  # Install docker and docker-compose
+  config.vm.provision :docker
+  config.vm.provision :docker_compose
+
+  # Install node and npm
+  config.vm.provision "shell", path: "bootstrap.sh"
 
   config.vm.post_up_message = "Your workshop environment is up and running \n Do vagrant ssh to login to your VM \n Do vagrant destroy to remove any trace of your VM"
 

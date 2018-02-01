@@ -1,6 +1,5 @@
 let chai = require('chai');
 let expect = chai.expect;
-let request = require('request-promise-native');
 let shop = require('./shop');
 
 describe('shop', () => {
@@ -23,7 +22,7 @@ describe('shop', () => {
     };
 
     const reviewResponse = {
-      'uri' : '/reviews',
+      'uri' : '/review',
       'verb' : 'GET',
       'res' : {
         'statusCode': 200,
