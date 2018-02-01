@@ -32,14 +32,15 @@ them. I have NOT included Linux versions in /installers.
 
 Slides & Topics
 ---------------
-* [Visit here for slides](https://docs.google.com/presentation/d/1QRvcH8OKaM7IWpn_3gT3q7lH1sLP8vcQw1BbyjxBEE4/edit?usp=sharing)
+* [Visit here for slides](https://goo.gl/pJSFKz)
 
 00-bring-up-the-vm
 ------------------
 
 * `cd [location that you copied the contents of this workshop]`
 * `cd vmbox/`
-* `vagrant box add workshop workshop.box`
+* `vagrant box add ubuntu/trusty64`
+* `vagrant plugin install vagrant-docker-compose`
 * `vagrant up`
 * `vagrant ssh`
 * Now you in an ssh session with the vmbox
@@ -56,6 +57,7 @@ you how to start a node app and how to run tests using npm.
 
 * `cd ~/topics/start/01-getting-started`
 * `cd helloworld`
+* `npm install`
 * `npm start`
 * Access the app from http://localhost:9080
 * You should see the "Hello World!" message in your browser.
