@@ -24,6 +24,16 @@ Some versions of Windows don't play nice with VirtualBox if you are running Wind
 ### Linux
 Please follow Vagrant and VirtualBox websites about how to install them.
 
+### Troubleshooting
+
+### Plugin Installation Errors
+If you have a previous version of Vagrant installed, your gems may be corrupted. 
+```
+rm -rf ~/.vagrant.d/{gems, plugins.json}
+Uninstall Vagrant
+Reinstalled Vagrant
+```
+
 00-bring-up-the-vm
 ==================
 
