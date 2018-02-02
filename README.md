@@ -1,19 +1,14 @@
 Testing Microservices
 =====================
 
-Version: 17 - Jan 2018
-
 Requirements
 ------------
-You need to have Vagrant and VirtualBox installed on your machine. There is a box
-file in `/vmbox` folder that you need to copy over. We are going to
-use Vagrant to control the virtual machine.
+This is a hands on workshop. In order to avoid Mac/Windows/Linux issues during the session we are going to use Vagrant and VirtualBox to make sure everyone's experience is consistent. Please install these before the workshop.
 
-* VirtualBox 5.1.14
-* Vagrant 1.9.1
+* VirtualBox 5.1.14 or newer
+* Vagrant 1.9.1 or newer
 
-You can find the installers [here](https://goo.gl/jVXR3e). Please the the
-notes below for Mac/Windows/Linux.
+You can find the installers [here](https://goo.gl/jVXR3e). Please the the notes below for Mac/Windows/Linux.
 
 After installing, please follow the section (00-bring-up-the-vm) and make sure you can do a successful ssh session.
 
