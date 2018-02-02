@@ -22,7 +22,7 @@ You should also get `Git-2.11.1-32-bit`. We will use the Git Bash window for ssh
 Some versions of Windows don't play nice with VirtualBox if you are running Windows on Parallels.
 
 ### Linux
-Please follow Vagrant and VirtualBox websites about how to installthem.
+Please follow Vagrant and VirtualBox websites about how to install them.
 
 Slides & Topics
 ---------------
