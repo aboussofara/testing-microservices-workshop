@@ -1,5 +1,5 @@
-Testing Microservices
-=====================
+Testing Microservices Workshop
+==============================
 
 Requirements
 ------------
