@@ -24,10 +24,6 @@ Some versions of Windows don't play nice with VirtualBox if you are running Wind
 ### Linux
 Please follow Vagrant and VirtualBox websites about how to install them.
 
-Slides & Topics
----------------
-* [Visit here for slides](https://goo.gl/pJSFKz)
-
 00-bring-up-the-vm
 ==================
 
@@ -41,6 +37,10 @@ Slides & Topics
 * `ls topics`
 * You should be able to see the list of topics under topics folder:
   finish and start
+  
+Slides & Topics
+---------------
+* [Visit here for slides](https://goo.gl/pJSFKz)
 
 
 01-getting-started
