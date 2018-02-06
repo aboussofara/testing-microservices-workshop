@@ -15,10 +15,7 @@ describe('shop', () => {
 
     return shop()
       .then((products) => {
-        expect(products).to.deep.equal([
-          { 'sku': 2, 'title': 'Crock-Pot SCVT650PS-CN 6.5 Quart', 'color': 'silver' },
-          { 'sku': 1, 'title': 'Flood Light with Cable and Plug LED', 'color': 'red' }
-        ]);
+        expect(products).to.deep.equal([]);
       });
   })
 });
