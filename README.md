@@ -39,7 +39,7 @@ Reinstalled Vagrant
 
 * `cd [location that you copied the contents of this workshop]`
 * `cd vmbox/`
-* `vagrant box add ubuntu/trusty64`
+* `vagrant box add ubuntu/trusty64 https://app.vagrantup.com/ubuntu/boxes/trusty64`
 * `vagrant plugin install vagrant-docker-compose`
 * `vagrant up`
 * `vagrant ssh`
