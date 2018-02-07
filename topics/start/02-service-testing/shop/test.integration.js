@@ -8,34 +8,35 @@ describe('shop', () => {
     const mb = require('mountebank-helper');
 
     // create the skeleton for the imposter (does not post to MB)
-    const catalogueImposter = new mb.Imposter({ 'imposterPort' : 9081 });
+    const catalogueImposter = new mb.Imposter({ 'imposterPort': 9081 });
 
     const catalogueResponse = {
-      'uri' : '/products',
-      'verb' : 'GET',
-      'res' : {
+      'uri': '/products',
+      'verb': 'GET',
+      'res': {
         'statusCode': 200,
-        'responseHeaders' : { 'Content-Type' : 'application/json' },
-        'responseBody' : JSON.stringify([{ sku: 1 }])
+        'responseHeaders': { 'Content-Type': 'application/json' },
+        'responseBody': JSON.stringify([{ sku: 1 }])
       }
     };
 
     catalogueImposter.addRoute(catalogueResponse);
 
     mb.startMbServer(2525)
-      .then(function() {
+      .then(function () {
         Promise.all([
           catalogueImposter.postToMountebank(),
         ])
-        .then( () => {
-          done();
-        })
+          .then(() => {
+            done();
+          })
       })
   });
 
   it('returns products with reviews', () => {
-    return shop().then((products) => {
-      expect(true).to.equal(false);
-    })
+    return shop()
+      .then((products) => {
+        expect(true).to.equal(false);
+      })
   })
 });

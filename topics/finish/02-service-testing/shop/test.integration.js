@@ -8,26 +8,26 @@ describe('shop', () => {
     const mb = require('mountebank-helper');
 
     // create the skeleton for the imposter (does not post to MB)
-    const catalogueImposter = new mb.Imposter({ 'imposterPort' : 9081 });
-    const reviewImposter = new mb.Imposter({ 'imposterPort' : 9082 });
+    const catalogueImposter = new mb.Imposter({ 'imposterPort': 9081 });
+    const reviewImposter = new mb.Imposter({ 'imposterPort': 9082 });
 
     const catalogueResponse = {
-      'uri' : '/products',
-      'verb' : 'GET',
-      'res' : {
+      'uri': '/products',
+      'verb': 'GET',
+      'res': {
         'statusCode': 200,
-        'responseHeaders' : { 'Content-Type' : 'application/json' },
-        'responseBody' : JSON.stringify([{ sku: 1 }])
+        'responseHeaders': { 'Content-Type': 'application/json' },
+        'responseBody': JSON.stringify([{ sku: 1 }])
       }
     };
 
     const reviewResponse = {
-      'uri' : '/review',
-      'verb' : 'GET',
-      'res' : {
+      'uri': '/review',
+      'verb': 'GET',
+      'res': {
         'statusCode': 200,
-        'responseHeaders' : { 'Content-Type' : 'application/json' },
-        'responseBody' : JSON.stringify({ 1: [{}] })
+        'responseHeaders': { 'Content-Type': 'application/json' },
+        'responseBody': JSON.stringify({ 1: [{}] })
       }
     };
 
@@ -35,14 +35,14 @@ describe('shop', () => {
     reviewImposter.addRoute(reviewResponse);
 
     mb.startMbServer(2525)
-      .then(function() {
+      .then(function () {
         Promise.all([
           catalogueImposter.postToMountebank(),
           reviewImposter.postToMountebank(),
         ])
-        .then( () => {
-          done();
-        })
+          .then(() => {
+            done();
+          })
       })
   });
 

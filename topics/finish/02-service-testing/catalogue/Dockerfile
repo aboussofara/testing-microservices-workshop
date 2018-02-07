@@ -1,4 +1,4 @@
-FROM node:6.9.4-alpine
+FROM node:8.9.0-alpine
 
 EXPOSE 9081
 
