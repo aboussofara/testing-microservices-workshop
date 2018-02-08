@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha test.js",
-    "service": "mocha --timeout 3000 test.service.js"
+    "service-test": "mocha --timeout 3000 --exit test.service.js"
   },
   "author": "",
   "license": "BSD-2-Clause",
@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "mocha": "^5.0.0",
     "mountebank-helper": "^1.2.1"
   }

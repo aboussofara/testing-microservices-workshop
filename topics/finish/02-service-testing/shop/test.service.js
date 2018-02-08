@@ -1,6 +1,8 @@
-let chai = require('chai');
-let expect = chai.expect;
-let shop = require('./shop');
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
+const expect = chai.expect;
+const shop = require('./shop');
 
 describe('shop', () => {
   before((done) => {
@@ -47,8 +49,6 @@ describe('shop', () => {
   });
 
   it('returns products with reviews', () => {
-    return shop().then((products) => {
-      expect(products.length).to.equal(1);
-    })
+    return expect(shop()).to.eventually.have.lengthOf(1);
   })
 });
