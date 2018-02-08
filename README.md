@@ -32,6 +32,7 @@ Please follow Vagrant and VirtualBox websites about how to install them.
 ==================
 
 * `git clone {this repo}`
+* `cd testing-microservices-workshop`
 * `cd vmbox/`
 * `vagrant box add ubuntu/trusty64 https://app.vagrantup.com/ubuntu/boxes/trusty64`
 * `vagrant plugin install vagrant-docker-compose`
