@@ -3,7 +3,9 @@ Testing Microservices Workshop
 
 Requirements
 ------------
-This is a hands on workshop. In order to avoid Mac/Windows/Linux issues during the session we are going to use Vagrant and VirtualBox to make sure everyone's experience is consistent. Please install these before the workshop.
+This is a hands on workshop. In order to avoid Mac/Windows/Linux issues during the session we are going to use Vagrant and VirtualBox to make sure everyone's experience is consistent. If you had any problems with the installation please open an issue and we will get back to you.
+
+Please install these before the workshop.
 
 * VirtualBox 5.1.14 or newer
 * Vagrant 1.9.1 or newer
