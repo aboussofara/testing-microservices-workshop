@@ -28,8 +28,8 @@ Please follow Vagrant and VirtualBox websites about how to install them.
 
 
 
-00-bring-up-the-vm
-==================
+Setting up your workstation
+---------------------------
 
 * `git clone {this repo}`
 * `cd testing-microservices-workshop`
@@ -42,6 +42,8 @@ Please follow Vagrant and VirtualBox websites about how to install them.
 * `ls topics`
 * You should be able to see the list of topics under topics folder:
   finish and start
+
+[![asciicast](https://asciinema.org/a/FUJVZbGS4OQmI1U77eDUn5Wyp.png)](https://asciinema.org/a/FUJVZbGS4OQmI1U77eDUn5Wyp)
 
 ### Troubleshooting
 
