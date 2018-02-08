@@ -24,20 +24,12 @@ Some versions of Windows don't play nice with VirtualBox if you are running Wind
 ### Linux
 Please follow Vagrant and VirtualBox websites about how to install them.
 
-### Troubleshooting
 
-### Plugin Installation Errors
-If you have a previous version of Vagrant installed, your gems may be corrupted. 
-```
-rm -rf ~/.vagrant.d/{gems, plugins.json}
-Uninstall Vagrant
-Reinstalled Vagrant
-```
 
 00-bring-up-the-vm
 ==================
 
-* `cd [location that you copied the contents of this workshop]`
+* `git clone {this repo}`
 * `cd vmbox/`
 * `vagrant box add ubuntu/trusty64 https://app.vagrantup.com/ubuntu/boxes/trusty64`
 * `vagrant plugin install vagrant-docker-compose`
@@ -47,7 +39,17 @@ Reinstalled Vagrant
 * `ls topics`
 * You should be able to see the list of topics under topics folder:
   finish and start
-  
+
+### Troubleshooting
+
+### Plugin Installation Errors
+If you have a previous version of Vagrant installed, your gems may be corrupted.
+```
+rm -rf ~/.vagrant.d/{gems, plugins.json}
+Uninstall Vagrant
+Reinstalled Vagrant
+```
+
 Slides & Topics
 ---------------
 * [Visit here for slides](https://goo.gl/pJSFKz)
