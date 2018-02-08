@@ -1,8 +1,5 @@
 const verifier = require('pact').Verifier;
 const path = require('path');
-const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
-chai.use(chaiAsPromised);
 
 // Verify that the provider meets all consumer expectations
 describe('Consumer contract tests for review', () => {

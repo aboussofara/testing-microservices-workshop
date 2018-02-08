@@ -1,4 +1,4 @@
-FROM node:6.9.4-alpine
+FROM node:8.9.0-alpine
 
 EXPOSE 9083
 
@@ -13,6 +13,9 @@ ENV NPM_CONFIG_LOGLEVEL warn
 # * development (default): installs dependencies and devDependencies
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
+
+RUN apk update && apk upgrade && \
+    apk add --no-cache make python
 
 # Helps to not invalidate cache before installing node modules
 COPY . .

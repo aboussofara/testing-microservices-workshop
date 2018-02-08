@@ -57,7 +57,7 @@ describe('Pact with catalogue', () => {
     it('can process the JSON payload from the provider', () => {
       const response = shop();
 
-      return expect(response).to.eventually.have.deep.property('[0].sku', 1);
+      return expect(response).to.eventually.have.nested.property('[0].sku', 1);
     });
 
     it('should validate the interactions and create a contract', () => {
