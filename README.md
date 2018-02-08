@@ -1,8 +1,7 @@
-Testing Microservices Workshop
-==============================
+# Testing Microservices Workshop
 
-Requirements
-------------
+## Requirements
+
 This is a hands on workshop. In order to avoid Mac/Windows/Linux issues during the session we are going to use Vagrant and VirtualBox to make sure everyone's experience is consistent. If you had any problems with the installation please open an issue and we will get back to you.
 
 Please install these before the workshop.
@@ -28,8 +27,7 @@ Please follow Vagrant and VirtualBox websites about how to install them.
 
 
 
-Setting up your workstation
----------------------------
+## Setting up your workstation
 
 * `git clone {this repo}`
 * `cd testing-microservices-workshop`
@@ -47,7 +45,7 @@ Setting up your workstation
 
 ### Troubleshooting
 
-### Plugin Installation Errors
+#### Plugin Installation Errors
 If you have a previous version of Vagrant installed, your gems may be corrupted.
 ```
 rm -rf ~/.vagrant.d/{gems, plugins.json}
@@ -55,13 +53,13 @@ Uninstall Vagrant
 Reinstalled Vagrant
 ```
 
-Slides & Topics
----------------
+# Workshop Material
+
+## Slides & Topics
 * [Visit here for slides](https://goo.gl/pJSFKz)
 
+## 01-getting-started
 
-01-getting-started
-==================
 
 This module tests if your workshop VM is configured properly. Also tells
 you how to start a node app and how to run tests using npm.
@@ -78,15 +76,14 @@ you how to start a node app and how to run tests using npm.
   a look at the test.
 * Try to make the unit test pass.
 
-02-service-testing
-==================
+## 02-service-testing
+
 
 In this module, we run our three interacting services using Docker. Then
 we try to write service test against running services. Then we write a
 better test using mb as service virtualizer.
 
-Start
------
+### Start
 
 * On an active ssh session open the second module:
 * `cd ~/topics/start/02-service-testing`
@@ -112,8 +109,7 @@ shop_1       | shop listening on 9083!
 * Notice how `shop` is orchestrating downstream calls to get catalogue and reviews.
 
 
-Exercise
---------
+### Exercise
 * Stop the running docker-compose by `cmd + c` or `ctrl + c`. Make sure the services
   are not running by navigating to: `http://localhost:9083` and see
 it does not load in browser.
@@ -125,23 +121,21 @@ for review. Try to do the same thing for review and make the service
 test pass without any dependent service running.
 
 
-03-contract-testing
-===================
+## 03-contract-testing
 
 In this module, we run our three interacting services using Docker. Then
 we try to write a contract test between shop and catalogue. We will
 simulate a breaking change from the catalogue team and see how it
 affects the contract test.
 
-Start
------
+### Start
+
 * On an active ssh session bring up the three services using docker-compose:
 * `cd ~/topics/start/03-contract-testing`
 * `cd ~/topics/start/03-contract-testing/shop`
 * In your text editor, take a look at `test.service.js` and familiarize yourself with how we are using pact to mock our providers.
 
-Exercise
---------
+### Exercise
 * On the SSH session, try to run the service tests by `npm run service-test`
 * Try to make the test pass with proper mocks in place.
 * Restart the apps:
