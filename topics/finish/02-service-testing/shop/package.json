@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha test.js",
-    "integration": "mocha --timeout 3000 test.integration.js"
+    "service-test": "mocha --timeout 3000 test.service.js"
   },
   "author": "",
   "license": "BSD-2-Clause",

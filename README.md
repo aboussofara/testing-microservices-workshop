@@ -117,11 +117,11 @@ Exercise
 * Stop the running docker-compose by `cmd + c` or `ctrl + c`. Make sure the services
   are not running by navigating to: `http://localhost:9083` and see
 it does not load in browser.
-* Run the integration tests: `npm run integration`
+* Run the service tests: `npm run service-test`
 * See it fail because it can not connect to `...connect ECONNREFUSED 127.0.0.1:9082`
-* Take a look at the `test.integration.js` file. Notice how we are
+* Take a look at the `test.service.js` file. Notice how we are
   making a mock for the catalogue on 9081 but we have not created a mock
-for review. Try to do the same thing for review and make the integration
+for review. Try to do the same thing for review and make the service
 test pass without any dependent service running.
 
 
@@ -138,11 +138,11 @@ Start
 * On an active ssh session bring up the three services using docker-compose:
 * `cd ~/topics/start/03-contract-testing`
 * `cd ~/topics/start/03-contract-testing/shop`
-* In your text editor, take a look at `test.integration.js` and familiarize yourself with how we are using pact to mock our providers.
+* In your text editor, take a look at `test.service.js` and familiarize yourself with how we are using pact to mock our providers.
 
 Exercise
 --------
-* On the SSH session, try to run the service tests by `npm run integration`
+* On the SSH session, try to run the service tests by `npm run service-test`
 * Try to make the test pass with proper mocks in place.
 * Restart the apps:
 * Stop the docker-compose session by `cmd + c` or `ctrl + c` if it is running on a session window
